@@ -2,7 +2,7 @@
 
 Boilerplate, It's about doing things right the first time, so you do not waste time
 
-![tweetyimg](images/tweety.png)
+![tweety-create-logo](https://user-images.githubusercontent.com/66258652/147775217-c22f0128-c0b3-489e-82e2-e5eb511346d7.png)
 
 ![tweety-create](https://img.shields.io/badge/%40tweety--create-generator-green)
 ![tweety-create](https://img.shields.io/static/v1?label=cli&message=no-more-time-waste&color=red?)
@@ -39,4 +39,23 @@ Run Script
 
 ```bash
 tweety-create
+```
+
+Demo:
+
+```bash
+    $
+    Do you like to change the project name? (yes||no) yes
+    What should be the title ? (My Project):  webProject
+    creating required files ...in a moment ♟
+    Applying regression...✨
+    Okkk your working directroy is:  tests 
+    
+    
+    style file has been generated: with RESET ✔
+    index file has been generated: ✔
+    script file has been generated: ✔
+    
+    
+    HAPPY CODING... ( ｡ ◕ ‿ ◕ ｡ )
 ```
