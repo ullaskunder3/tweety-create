@@ -15,5 +15,9 @@
     "core-module"
   ],
   "author": "Ullas Kunder",
-  "license": "MIT"
+  "license": "MIT",
+  "files": [
+    "bin",
+    "templates"
+  ]
 }
