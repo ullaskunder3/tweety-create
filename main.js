@@ -29,8 +29,11 @@ const { colorRef: pixidust } = require('./bin/utility')
 const directory = path.join(__dirname, 'templates/jhcTemplate');
 const currentRoot = path.basename(path.resolve(process.cwd()));
 const htmlfile = path.join(process.cwd(), 'index.html')
-
+let canRun = false;
 let projectTitle = 'My Project';
+let options = `${pixidust.FgGreen}yes|${pixidust.resetBCol, pixidust.FgRed}|no${pixidust.resetBCol}`;
+let setTitle = `${pixidust.FgYellow}${projectTitle}${pixidust.resetBCol}`
+let projectType = ['1: Basic web', '2: git init'];
 
 var readLine = readline.createInterface({
     input: process.stdin,
