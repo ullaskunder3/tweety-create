@@ -1,6 +1,6 @@
 {
   "name": "tweety-create",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "project template generator minimal initial project code creation tool for students",
   "main": "main.js",
   "bin": {
