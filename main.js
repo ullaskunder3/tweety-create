@@ -32,7 +32,7 @@ const htmlfile = path.join(process.cwd(), 'index.html')
 
 let projectTitle = 'My Project';
 
-var realLine = readline.createInterface({
+var readLine = readline.createInterface({
     input: process.stdin,
     output: process.stdout
 });
