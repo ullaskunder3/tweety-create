@@ -49,7 +49,7 @@ function asyncCreateFiles(callback) {
             return console.log('Unable to scan project dirctory' + err);
         }
         files.forEach((file) => {
-            var readStream = fs.createReadStream(path.posix.join(directory + '\\' + file), 'utf-8');
+            var readStream = fs.createReadStream(path.posix.join(directory, file), 'utf-8');
             var writeStream = fs.createWriteStream(file);
             readStream.pipe(writeStream)
         })
