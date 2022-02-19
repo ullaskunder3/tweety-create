@@ -46,7 +46,7 @@ function asyncCreateFiles(callback) {
             return console.log('Unable to scan project dirctory' + err);
         }
         files.forEach((file) => {
-            var readStream = fs.createReadStream(directory + '\\' + file, 'utf-8');
+            var readStream = fs.createReadStream(path.posix.join(directory + '\\' + file), 'utf-8');
             var writeStream = fs.createWriteStream(file);
             readStream.pipe(writeStream)
         })
@@ -87,35 +87,68 @@ function alterConetent() {
 
 }
 
+function query(qparams) {
+    return new Promise(resolve => readLine.question(qparams, asn => {
+        resolve(asn);
+    }))
+}
+
+async function webProject() {
+    let isYes = await query(`Do you like to change the project name? (${options})`)
+    if (isYes === 'yes') {
+        canRun = true;
+        let answer = await query(`What should be the title ? (${setTitle}):`)
+        console.log(answer);
+        if (canRun && answer) {
+            projectTitle = answer;
+            asyncCreateFiles(alterConetent)
+        } else {
+            console.log('close...');
+            readLine.close();
+        }
+        readLine.close();
+    }
+    else if (isYes === 'no') {
+        canRun = true;
+        if (canRun) {
+            asyncCreateFiles(alterConetent)
+        }
+        readLine.close();
+    }
+    else {
+        console.log('what the hack');
+        readLine.close();
+    }
+    readLine.close()
+}
+function initGit() {
+    const { exec } = require("child_process");
+
+    exec("git init", (error, stdout, stderr) => {
+        if (error) {
+            console.log(`error: ${error.message} or  git may be not installed`);
+            return;
+        }
+        if (stderr) {
+            console.log(`stderr: ${stderr}`);
+            return;
+        }
+    });
+}
+
 function init() {
 
-    let canRun = false;
-    let options = `${pixidust.FgGreen}yes|${pixidust.resetBCol, pixidust.FgRed}|no${pixidust.resetBCol}`;
-    let setTitle = `${pixidust.FgYellow}${projectTitle}${pixidust.resetBCol}`
-
-    realLine.question(`Do you like to change the project name? (${options}) `, (isYes) => {
-        if (isYes === 'yes') {
-            canRun = true;
-            realLine.question(`What should be the title ? (${setTitle}):  `, function (answer) {
-                if (answer && answer.length) {
-                    projectTitle = answer;
-                }
-                if (canRun) {
-                    asyncCreateFiles(alterConetent)
-                }
-                realLine.close();
-            });
-        }
-        else if (isYes === 'no') {
-            canRun = true;
-            if (canRun) {
-                asyncCreateFiles(alterConetent)
-            }
-            realLine.close();
-        }
-        else {
-            console.log('what the hack');
-            realLine.close();
+    readLine.question(`What project you like to create?  \n${projectType[0] + "\n" + projectType[1]}\n>`, (ans) => {
+        switch (ans) {
+            case "1":
+                webProject()
+                break;
+            case "2":
+                console.log('git has been initialized :)');
+                initGit()
+                readLine.close()
+            default:
+                break;
         }
     })
 }

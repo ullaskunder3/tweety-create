@@ -45,6 +45,17 @@ Demo:
 
 ```bash
     $
+    What project you like to create?
+    1: Basic web
+    2: git init
+    >2
+    git has been initialized :)
+    
+    $
+    What project you like to create?
+    1: Basic web
+    2: git init
+    >1
     Do you like to change the project name? (yes||no) yes
     What should be the title ? (My Project):  webProject
     creating required files ...in a moment ♟
